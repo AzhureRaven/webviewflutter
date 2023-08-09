@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_pro/webview_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:webviewflutter/dialogs/retry_dialog.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webviewflutter/dialogs/yes_no_dialog.dart';
 
@@ -15,6 +16,7 @@ class WebScreen extends StatefulWidget {
   State<WebScreen> createState() => _WebScreenState();
 }
 
+//make internet checker and realod
 class _WebScreenState extends State<WebScreen> {
   late String url;
   late WebViewController _webViewController;
@@ -49,9 +51,11 @@ class _WebScreenState extends State<WebScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: _onWillPop,
-        child: SafeArea(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      body: SafeArea(
+        child: WillPopScope(
+            onWillPop: _onWillPop,
             child: WebView(
               initialUrl: url,
               javascriptMode: JavascriptMode.unrestricted,
@@ -78,10 +82,28 @@ class _WebScreenState extends State<WebScreen> {
                 context.loaderOverlay.hide();
                 print('Page finished loading: $url');
               },
+              onWebResourceError: (WebResourceError webResourceError){
+                context.loaderOverlay.hide();
+                showDialog(
+                    context: context,
+                    builder: (context) => WillPopScope(
+                      onWillPop: () async => false,
+                      child: RetryDialog(
+                        title: "Tidak ada koneksi internet",
+                        content: "Periksa koneksi internet",
+                        onRetry: (){
+                            _webViewController.reload();
+                            context.loaderOverlay.show();
+                            },
+                      ),
+                    ),
+                );
+              },
               gestureNavigationEnabled: true,
               geolocationEnabled: true,//support geolocation or not
             )
-        )
+        ),
+      ),
     );
   }
 

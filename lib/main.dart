@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             cardTheme: CardTheme(color: Colors.grey[800], elevation: 3),
             fontFamily: 'Arimo'
         ),
-        home: const WebScreen(initialUrl: ["https://arie.ls/filetest/"]),
+        home: const WebScreen(initialUrl: ["https://wizardsoftheotherworldlycourt.com/"]),
       ),
     );
   }
