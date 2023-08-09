@@ -4,6 +4,7 @@ import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webviewflutter/dialogs/yes_no_dialog.dart';
 
 class WebScreen extends StatefulWidget {
   final List<String> initialUrl;
@@ -82,19 +83,10 @@ class _WebScreenState extends State<WebScreen> {
     else{
       return (await showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Are you sure?'),
-          content: const Text('Do you want to exit an App'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('No'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: const Text('Yes'),
-            ),
-          ],
+        builder: (context) => YesNoDialog(
+          title: "Yakin Keluar",
+          content: "Apakah anda yakin keluar?",
+          onSuccess: (){Navigator.of(context).pop();},
         ),
       )) ?? false;
     }

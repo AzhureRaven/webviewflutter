@@ -19,8 +19,32 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.indigo,
+              accentColor: Colors.blueAccent,
+              brightness: Brightness.light,
+              backgroundColor: Colors.white,
+            ).copyWith(tertiary: Colors.green),
+            primaryColorDark: Colors.white,
+            dividerColor: Colors.grey[400],
+            //disabledColor: Colors.grey[400],
+            disabledColor: Colors.black,
+            cardTheme: const CardTheme(color: Colors.white,elevation: 3),
+            fontFamily: 'Arimo'
+        ),
+        darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(
+                primarySwatch: Colors.blue,
+                accentColor: Colors.blueAccent,
+                brightness: Brightness.dark,
+                backgroundColor: Colors.grey[900]
+            ).copyWith(tertiary: Colors.green),
+            primaryColorDark: Colors.white,
+            dividerColor: Colors.grey[700],
+            //disabledColor: Colors.grey[700],
+            disabledColor: Colors.white,
+            cardTheme: CardTheme(color: Colors.grey[800], elevation: 3),
+            fontFamily: 'Arimo'
         ),
         home: const WebScreen(initialUrl: ["https://wizardsoftheotherworldlycourt.com/"]),
       ),
