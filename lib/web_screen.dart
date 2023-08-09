@@ -1,9 +1,10 @@
 import 'dart:io';
-import 'package:file_picker/file_picker.dart';
-import 'package:webview_flutter_android/webview_flutter_android.dart';
+//import 'package:file_picker/file_picker.dart';
+//import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_pro/webview_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webviewflutter/dialogs/yes_no_dialog.dart';
 
 class WebScreen extends StatefulWidget {
@@ -22,7 +23,8 @@ class _WebScreenState extends State<WebScreen> {
   void initState() {
     super.initState();
     url = widget.initialUrl[0];
-    _webViewController = WebViewController()
+    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    /*_webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
@@ -42,16 +44,48 @@ class _WebScreenState extends State<WebScreen> {
         ),
       )
       ..loadRequest(Uri.parse(url));
-    addFileSelectionListener();
+    addFileSelectionListener();*/
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(onWillPop: _onWillPop,
-    child: SafeArea(child: WebViewWidget(controller: _webViewController)));
+    return WillPopScope(
+        onWillPop: _onWillPop,
+        child: SafeArea(
+            child: WebView(
+              initialUrl: url,
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) {
+                _webViewController = webViewController;
+              },
+              onProgress: (int progress) {
+                print("WebView is loading (progress : $progress%)");
+              },
+              navigationDelegate: (NavigationRequest request) {
+                context.loaderOverlay.show();
+                if (request.url.startsWith('https://www.youtube.com/')) {
+                  context.loaderOverlay.show();
+                  print('blocking navigation to $request}');
+                  return NavigationDecision.prevent;
+                }
+                print('allowing navigation to $request');
+                return NavigationDecision.navigate;
+              },
+              onPageStarted: (String url) {
+                print('Page started loading: $url');
+              },
+              onPageFinished: (String url) {
+                context.loaderOverlay.hide();
+                print('Page finished loading: $url');
+              },
+              gestureNavigationEnabled: true,
+              geolocationEnabled: true,//support geolocation or not
+            )
+        )
+    );
   }
 
-  void addFileSelectionListener() async {
+  /*void addFileSelectionListener() async {
     if (Platform.isAndroid) {
       final androidController = _webViewController.platform as AndroidWebViewController;
       await androidController.setOnShowFileSelector(_androidFilePicker);
@@ -66,7 +100,7 @@ class _WebScreenState extends State<WebScreen> {
       return [file.uri.toString()];
     }
     return [];
-  }
+  }*/
 
   Future<bool> initialUrlsMatch() async{
     for(url in widget.initialUrl){
