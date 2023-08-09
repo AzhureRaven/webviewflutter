@@ -6,7 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebScreen extends StatefulWidget {
-  final String initialUrl;
+  final List<String> initialUrl;
   const WebScreen({Key? key, required this.initialUrl}) : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class _WebScreenState extends State<WebScreen> {
   @override
   void initState() {
     super.initState();
-    url = widget.initialUrl;
+    url = widget.initialUrl[0];
     _webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(Colors.white)
@@ -67,9 +67,15 @@ class _WebScreenState extends State<WebScreen> {
     return [];
   }
 
+  Future<bool> initialUrlsMatch() async{
+    for(url in widget.initialUrl){
+      if(await _webViewController.currentUrl() == url) return true;
+    }
+    return false;
+  }
 
   Future<bool> _onWillPop() async {
-    if(await _webViewController.canGoBack()){
+    if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
       _webViewController.goBack();
       return false;
     }
