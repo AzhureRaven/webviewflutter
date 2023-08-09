@@ -95,6 +95,15 @@ class _WebScreenState extends State<WebScreen> {
                             _webViewController.reload();
                             context.loaderOverlay.show();
                             },
+                        onRollback: () async {
+                          var navigator = Navigator.of(context);
+                          if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
+                            _webViewController.goBack();
+                          }
+                          else{
+                            navigator.pop();
+                          }
+                        },
                       ),
                     ),
                 );
@@ -132,6 +141,7 @@ class _WebScreenState extends State<WebScreen> {
   }
 
   Future<bool> _onWillPop() async {
+    var navigator = Navigator.of(context);
     if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
       _webViewController.goBack();
       return false;
@@ -142,7 +152,7 @@ class _WebScreenState extends State<WebScreen> {
         builder: (context) => YesNoDialog(
           title: "Yakin Keluar",
           content: "Apakah anda yakin keluar?",
-          onSuccess: (){Navigator.of(context).pop();},
+          onSuccess: (){navigator.pop();},
         ),
       )) ?? false;
     }
