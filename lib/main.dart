@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const WebScreen(initialUrl: ["https://wizardsoftheotherworldlycourt.com/"]),
+        home: const WebScreen(initialUrl: ["https://reward.grandkecubunghotel.com/", "https://reward.grandkecubunghotel.com/rasio/login/&url=https:-*%7C%7C*-reward.grandkecubunghotel.com/rasio/","https://reward.grandkecubunghotel.com/rasio/home"]),
       ),
     );
   }
