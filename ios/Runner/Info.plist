@@ -5,13 +5,13 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>io.flutter.embedded_views_preview</key>
-        <string>YES</string>
-        <key>NSAppTransportSecurity</key>
-        <dict>
-          <!--Include to allow all connections (DANGER)-->
-          <key>NSAllowsArbitraryLoads</key>
-              <true/>
-        </dict>
+		<string>YES</string>
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<!--Include to allow all connections (DANGER)-->
+			<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		</dict>
 		<key>CFBundleDisplayName</key>
 		<string>Webviewflutter</string>
 		<key>CFBundleExecutable</key>
