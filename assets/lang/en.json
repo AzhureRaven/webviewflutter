@@ -12,5 +12,8 @@
   "no": "No",
 
   "admin": "Admin",
-  "scanner": "Scan"
+  "scanner": "Scan Voucher",
+  "start_scan": "Start Scan",
+  "cancel": "Cancel",
+  "qr_error": "Cannot read QR Code"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webviewflutter/routes/scan_screen.dart';
 import 'package:webviewflutter/routes/web_screen.dart';
 import 'package:webviewflutter/widgets/boxes.dart';
 import 'package:webviewflutter/widgets/labels.dart';
@@ -35,7 +36,11 @@ class MenuScreen extends StatelessWidget {
             PaddingBox(
               child: SizedBox(
                 width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: BasicLabel(text: AppLocalization.of(context).translate("scanner").toString()))
+                  child: ElevatedButton(onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                      return const ScanScreen();
+                    }));
+                  }, child: BasicLabel(text: AppLocalization.of(context).translate("scanner").toString()))
               ),
             )
           ],

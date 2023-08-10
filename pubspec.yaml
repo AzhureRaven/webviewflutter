@@ -44,6 +44,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_exit_app: ^1.1.2
+  flutter_barcode_scanner: ^2.0.0
   #webview_flutter: ^4.2.2
   #webview_flutter_android: ^3.9.2
   #webview_flutter_wkwebview: ^3.7.2

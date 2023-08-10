@@ -12,5 +12,8 @@
   "no": "Tidak",
 
   "admin": "Menu Admin",
-  "scanner": "Scan Voucher"
+  "scanner": "Scan Voucher",
+  "start_scan": "Mulai Scan",
+  "cancel": "Kembali",
+  "qr_error": "Tidak bisa membaca kode QR"
 }
