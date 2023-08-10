@@ -1,0 +1,11 @@
+{
+  "error_internet": "Tidak ada koneksi internet",
+  "check_internet": "Silakan periksa koneksi internet Anda",
+  "error": "Terjadi kesalahan",
+  "retry": "Coba Lagi",
+  "retry_prev": "Kembali ke halaman sebelumnya",
+  "exit": "Keluar",
+  "exit_content": "Apakah anda yakin mau keluar?",
+  "yes": "Iya",
+  "no": "Tidak"
+}

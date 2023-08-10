@@ -7,6 +7,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:webviewflutter/dialogs/retry_dialog.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webviewflutter/dialogs/yes_no_dialog.dart';
+import 'package:webviewflutter/utilities/localization.dart';
 
 class WebScreen extends StatefulWidget {
   final List<String> initialUrl;
@@ -89,8 +90,8 @@ class _WebScreenState extends State<WebScreen> {
                     builder: (context) => WillPopScope(
                       onWillPop: () async => false,
                       child: RetryDialog(
-                        title: "Tidak ada koneksi internet",
-                        content: "Periksa koneksi internet",
+                        title: AppLocalization.of(context).translate("error_internet").toString(),
+                        content: AppLocalization.of(context).translate("check_internet").toString(),
                         onRetry: (){
                             _webViewController.reload();
                             context.loaderOverlay.show();
@@ -150,8 +151,8 @@ class _WebScreenState extends State<WebScreen> {
       return (await showDialog(
         context: context,
         builder: (context) => YesNoDialog(
-          title: "Yakin Keluar",
-          content: "Apakah anda yakin keluar?",
+          title: AppLocalization.of(context).translate("exit").toString(),
+          content: AppLocalization.of(context).translate("exit_content").toString(),
           onSuccess: (){navigator.pop();},
         ),
       )) ?? false;

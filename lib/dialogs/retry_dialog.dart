@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webviewflutter/utilities/localization.dart';
 
 class RetryDialog extends StatelessWidget {
   final VoidCallback onRetry;
@@ -16,11 +17,11 @@ class RetryDialog extends StatelessWidget {
         TextButton(onPressed: () {
           onRollback.call();
           Navigator.pop(context);
-        }, child: const Text("Return prev Page")),
+        }, child: Text(AppLocalization.of(context).translate("retry_prev").toString())),
         TextButton(onPressed: () {
           onRetry.call();
           Navigator.pop(context);
-        }, child: const Text("Try Again"))
+        }, child: Text(AppLocalization.of(context).translate("retry").toString()))
       ],
     );
   }

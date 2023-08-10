@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webviewflutter/utilities/localization.dart';
 
 class YesNoDialog extends StatelessWidget {
   final VoidCallback onSuccess;
@@ -14,12 +15,12 @@ class YesNoDialog extends StatelessWidget {
       actions: [
         TextButton(onPressed: () {
           Navigator.pop(context);
-        }, child: const Text("No")),
+        }, child: Text(AppLocalization.of(context).translate("no").toString())),
         const SizedBox(width: 8.0),
         TextButton(onPressed: () {
           onSuccess.call();
           Navigator.pop(context);
-        }, child: const Text("Yes"))
+        }, child: Text(AppLocalization.of(context).translate("yes").toString()))
       ],
     );
   }

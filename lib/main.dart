@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:webviewflutter/utilities/localization.dart';
 import 'package:webviewflutter/web_screen.dart';
 
 void main() async {
@@ -46,6 +48,13 @@ class MyApp extends StatelessWidget {
             cardTheme: CardTheme(color: Colors.grey[800], elevation: 3),
             fontFamily: 'Arimo'
         ),
+        supportedLocales: const [Locale('en'),Locale('id')],
+        localizationsDelegates: const [
+          AppLocalization.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         home: const WebScreen(initialUrl: ["https://wizardsoftheotherworldlycourt.com/"]),
       ),
     );
