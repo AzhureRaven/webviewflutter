@@ -144,6 +144,7 @@ class _WebScreenState extends State<WebScreen> {
   }
 
   Future<bool> _onWillPop() async {
+    var navigator = Navigator.of(context);
     if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
       _webViewController.goBack();
       return false;
@@ -154,7 +155,7 @@ class _WebScreenState extends State<WebScreen> {
         builder: (context) => YesNoDialog(
           title: AppLocalization.of(context).translate("exit").toString(),
           content: AppLocalization.of(context).translate("exit_content").toString(),
-          onSuccess: (){FlutterExitApp.exitApp();},
+          onSuccess: (){navigator.pop();},
         ),
       )) ?? false;
     }

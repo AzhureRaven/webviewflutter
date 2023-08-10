@@ -1,4 +1,6 @@
 {
+  "title": "Grand Kecubung Hotel",
+
   "error_internet": "Tidak ada koneksi internet",
   "check_internet": "Silakan periksa koneksi internet Anda",
   "error": "Terjadi kesalahan",
@@ -7,5 +9,8 @@
   "exit": "Keluar",
   "exit_content": "Apakah anda yakin mau keluar?",
   "yes": "Iya",
-  "no": "Tidak"
+  "no": "Tidak",
+
+  "admin": "Menu Admin",
+  "scanner": "Scan Voucher"
 }

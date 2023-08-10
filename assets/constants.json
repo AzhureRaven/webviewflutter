@@ -1,0 +1,52 @@
+{
+  "font_sizes": {
+    "null": 0,
+    "x_small": 8,
+    "small": 10,
+    "normal": 12,
+    "regular": 14,
+    "large": 16,
+    "large_x": 18,
+    "large_xx": 20,
+    "super_large": 26
+  },
+  "offset_sizes": {
+    "null": 0,
+    "xx_small": 3,
+    "x_small": 5,
+    "default": 8,
+    "small": 10,
+    "regular": 16
+  },
+  "round_sizes": {
+    "null": 0,
+    "small": 5,
+    "default": 10,
+    "regular": 20,
+    "large": 30
+  },
+  "length_sizes": {
+    "null": 0,
+    "icon": 25,
+    "small": 50,
+    "x_normal": 75,
+    "normal": 100,
+    "x_regular": 125,
+    "regular": 150,
+    "x_medium": 175,
+    "medium": 200,
+    "medium_x": 250,
+    "large": 300,
+    "large_x": 400,
+    "super_large": 500
+  },
+  "strings":{
+    "phone": "8113286800",
+    "youtube_id": "rqtdLOalGEc",
+    "website": "sindoexpress.co.id",
+    "youtube": "@sindoexpress2490",
+    "facebook": "sindoexpress",
+    "instagram": "sindo_express",
+    "chat_message": "Halo Sindo Express,"
+  }
+}

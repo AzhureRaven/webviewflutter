@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:webviewflutter/utilities/constants.dart';
 import 'package:webviewflutter/utilities/localization.dart';
-import 'package:webviewflutter/web_screen.dart';
+import 'package:webviewflutter/routes/menu_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Constants.load();
   FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
@@ -32,7 +34,6 @@ class MyApp extends StatelessWidget {
             //disabledColor: Colors.grey[400],
             disabledColor: Colors.black,
             cardTheme: const CardTheme(color: Colors.white,elevation: 3),
-            fontFamily: 'Arimo'
         ),
         darkTheme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
@@ -46,7 +47,6 @@ class MyApp extends StatelessWidget {
             //disabledColor: Colors.grey[700],
             disabledColor: Colors.white,
             cardTheme: CardTheme(color: Colors.grey[800], elevation: 3),
-            fontFamily: 'Arimo'
         ),
         supportedLocales: const [Locale('en'),Locale('id')],
         localizationsDelegates: const [
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const WebScreen(initialUrl: ["https://reward.grandkecubunghotel.com/", "https://reward.grandkecubunghotel.com/rasio/login/&url=https:-*%7C%7C*-reward.grandkecubunghotel.com/rasio/","https://reward.grandkecubunghotel.com/rasio/home"]),
+        home: const MenuScreen(),
       ),
     );
   }

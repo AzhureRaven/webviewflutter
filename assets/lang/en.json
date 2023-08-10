@@ -1,11 +1,16 @@
 {
+  "title": "Grand Kecubung Hotel",
+
   "error_internet": "No internet connection",
   "check_internet": "Please check your internet connection",
   "error": "Something went wrong",
   "retry": "Try Again",
   "retry_prev": "Return to previous page",
-  "exit": "Exit App",
+  "exit": "Exit Admin",
   "exit_content": "Are you sure you want to exit?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+
+  "admin": "Admin",
+  "scanner": "Scan"
 }
