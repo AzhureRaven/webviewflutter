@@ -41,6 +41,7 @@ dependencies:
   flutter_webview_pro: ^3.0.1+4
   flutter_localizations:
     sdk: flutter
+  flutter_exit_app: ^1.1.2
   #webview_flutter: ^4.2.2
   #webview_flutter_android: ^3.9.2
   #webview_flutter_wkwebview: ^3.7.2

@@ -3,6 +3,7 @@ import 'dart:io';
 //import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_exit_app/flutter_exit_app.dart';
 import 'package:flutter_webview_pro/webview_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:webviewflutter/dialogs/retry_dialog.dart';
@@ -153,7 +154,7 @@ class _WebScreenState extends State<WebScreen> {
         builder: (context) => YesNoDialog(
           title: AppLocalization.of(context).translate("exit").toString(),
           content: AppLocalization.of(context).translate("exit_content").toString(),
-          onSuccess: (){SystemChannels.platform.invokeMethod('SystemNavigator.pop');},
+          onSuccess: (){FlutterExitApp.exitApp();},
         ),
       )) ?? false;
     }
