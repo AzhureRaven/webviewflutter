@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.azhureraven" "\0"
-            VALUE "FileDescription", "webviewflutter" "\0"
+            VALUE "FileDescription", "Reward Kecubung" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "webviewflutter" "\0"
+            VALUE "InternalName", "Reward Kecubung" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.azhureraven. All rights reserved." "\0"
             VALUE "OriginalFilename", "webviewflutter.exe" "\0"
-            VALUE "ProductName", "webviewflutter" "\0"
+            VALUE "ProductName", "Reward Kecubung" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
