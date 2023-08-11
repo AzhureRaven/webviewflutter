@@ -15,5 +15,12 @@
   "scanner": "Scan Voucher",
   "start_scan": "Mulai Scan",
   "cancel": "Kembali",
-  "qr_error": "Tidak bisa membaca kode QR"
+  "qr_error": "Tidak bisa membaca kode QR",
+
+  "login": "Login",
+  "welcome_back": "Selamat datang kembali!",
+  "username": "Nama Pengguna Anda",
+  "password": "Kata Sandi Anda",
+  "login_fail": "Nama Pengguna/Kata Sandi tidak valid!",
+  "required_field": "Kolom ini harus diisi"
 }

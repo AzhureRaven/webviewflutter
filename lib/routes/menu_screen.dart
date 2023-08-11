@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webviewflutter/routes/login_screen.dart';
 import 'package:webviewflutter/routes/scan_screen.dart';
 import 'package:webviewflutter/routes/web_screen.dart';
 import 'package:webviewflutter/widgets/boxes.dart';
@@ -38,7 +39,7 @@ class MenuScreen extends StatelessWidget {
                 width: double.infinity,
                   child: ElevatedButton(onPressed: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                      return const ScanScreen();
+                      return const LoginScreen();
                     }));
                   }, child: BasicLabel(text: AppLocalization.of(context).translate("scanner").toString()))
               ),

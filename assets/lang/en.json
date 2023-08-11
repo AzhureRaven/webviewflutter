@@ -15,5 +15,12 @@
   "scanner": "Scan Voucher",
   "start_scan": "Start Scan",
   "cancel": "Cancel",
-  "qr_error": "Cannot read QR Code"
+  "qr_error": "Cannot read QR Code",
+
+  "login": "Login",
+  "welcome_back": "Welcome Back!",
+  "username": "Your Username",
+  "password": "Your Password",
+  "login_fail": "Invalid Username/Password!",
+  "required_field": "This field is required"
 }
