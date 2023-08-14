@@ -57,24 +57,16 @@ class _WebScreenState extends State<WebScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: SafeArea(
-        child: WillPopScope(
-            onWillPop: ()async {return false;},
-            child: ElevatedButton(
-            onPressed: () async {
-              await widget.browser.open(
-                  url: Uri.parse(url),
-                  options: ChromeSafariBrowserClassOptions(
-                    android: AndroidChromeCustomTabsOptions(
-                        isTrustedWebActivity: true),
-                  ));
-            }, child: Text("Open Android TWA Browser"),
-        ),
-      ),
-    )
+    widget.browser.open(
+        url: Uri.parse(url),
+        options: ChromeSafariBrowserClassOptions(
+          android: AndroidChromeCustomTabsOptions(
+              isTrustedWebActivity: true,
+            enableUrlBarHiding: true
+          ),
+        )
     );
+    return Placeholder();
   }
 
   /*void addFileSelectionListener() async {
