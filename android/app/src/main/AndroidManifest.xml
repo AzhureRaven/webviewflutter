@@ -40,7 +40,7 @@
             android:value="2" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.azhureraven.webviewflutter.fileprovider"
+            android:authorities="com.azhureraven.rewardkecubung.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
