@@ -29,27 +29,6 @@ class _WebScreenState extends State<WebScreen> {
     super.initState();
     url = widget.initialUrl[0];
     if (Platform.isAndroid) WebView.platform = AndroidWebView();
-    /*_webViewController = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onProgress: (int progress) {
-            print(progress.toString());
-          },
-          onPageStarted: (String url) {},
-          onPageFinished: (String url) {
-            context.loaderOverlay.hide();
-          },
-          onWebResourceError: (WebResourceError error) {},
-          onNavigationRequest: (NavigationRequest request) {
-            context.loaderOverlay.show();
-            return NavigationDecision.navigate;
-          },
-        ),
-      )
-      ..loadRequest(Uri.parse(url));
-    addFileSelectionListener();*/
   }
 
   @override
@@ -59,83 +38,74 @@ class _WebScreenState extends State<WebScreen> {
       body: SafeArea(
         child: WillPopScope(
             onWillPop: _onWillPop,
-            child: WebView(
-              initialUrl: url,
-              javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (WebViewController webViewController) {
-                _webViewController = webViewController;
-              },
-              onProgress: (int progress) {
-                print("WebView is loading (progress : $progress%)");
-              },
-              navigationDelegate: (NavigationRequest request) {
-                context.loaderOverlay.show();
-                if (request.url.startsWith('https://www.youtube.com/')) {
-                  context.loaderOverlay.show();
-                  print('blocking navigation to $request}');
-                  return NavigationDecision.prevent;
-                }
-                print('allowing navigation to $request');
-                return NavigationDecision.navigate;
-              },
-              onPageStarted: (String url) {
-                print('Page started loading: $url');
-              },
-              onPageFinished: (String url) {
-                context.loaderOverlay.hide();
-                print('Page finished loading: $url');
-              },
-              onWebResourceError: (WebResourceError webResourceError){
-                context.loaderOverlay.hide();
-                showDialog(
-                    context: context,
-                    builder: (context) => WillPopScope(
-                      onWillPop: () async => false,
-                      child: RetryDialog(
-                        title: AppLocalization.of(context).translate("error_internet").toString(),
-                        content: AppLocalization.of(context).translate("check_internet").toString(),
-                        onRetry: (){
-                            _webViewController.reload();
-                            context.loaderOverlay.show();
-                            },
-                        onRollback: () async {
-                          var navigator = Navigator.of(context);
-                          if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
-                            _webViewController.goBack();
-                          }
-                          else{
-                            navigator.pop();
-                          }
-                        },
-                      ),
-                    ),
-                );
-              },
-              gestureNavigationEnabled: true,
-              geolocationEnabled: false,//support geolocation or not
-              zoomEnabled: true,
-            )
+            child: getWebView()
         ),
       ),
     );
   }
 
-  /*void addFileSelectionListener() async {
-    if (Platform.isAndroid) {
-      final androidController = _webViewController.platform as AndroidWebViewController;
-      await androidController.setOnShowFileSelector(_androidFilePicker);
-    }
+  Widget getWebView() {
+    return WebView(
+      initialUrl: url,
+      javascriptMode: JavascriptMode.unrestricted,
+      onWebViewCreated: (WebViewController webViewController) {
+        _webViewController = webViewController;
+      },
+      onProgress: (int progress) {
+        print("WebView is loading (progress : $progress%)");
+      },
+      navigationDelegate: (NavigationRequest request) {
+        context.loaderOverlay.show();
+        if (request.url.startsWith('https://www.youtube.com/')) {
+          context.loaderOverlay.show();
+          print('blocking navigation to $request}');
+          return NavigationDecision.prevent;
+        }
+        print('allowing navigation to $request');
+        return NavigationDecision.navigate;
+      },
+      onPageStarted: (String url) {
+        print('Page started loading: $url');
+      },
+      onPageFinished: (String url) {
+        context.loaderOverlay.hide();
+        print('Page finished loading: $url');
+      },
+      onWebResourceError: (WebResourceError webResourceError) {
+        context.loaderOverlay.hide();
+        showDialog(
+          context: context,
+          builder: (context) =>
+              WillPopScope(
+                onWillPop: () async => false,
+                child: RetryDialog(
+                  title: AppLocalization.of(context)
+                      .translate("error_internet")
+                      .toString(),
+                  content: AppLocalization.of(context).translate(
+                      "check_internet").toString(),
+                  onRetry: () {
+                    _webViewController.reload();
+                    context.loaderOverlay.show();
+                  },
+                  onRollback: () async {
+                    var navigator = Navigator.of(context);
+                    if (await _webViewController.canGoBack() &&
+                        !(await initialUrlsMatch())) {
+                      _webViewController.goBack();
+                    }
+                    else {
+                      navigator.pop();
+                    }
+                  },
+                ),
+              ),
+        );
+      },
+      gestureNavigationEnabled: true,
+      geolocationEnabled: false, //support geolocation or not
+    );
   }
-
-  Future<List<String>> _androidFilePicker(final FileSelectorParams params) async {
-    final result = await FilePicker.platform.pickFiles();
-
-    if (result != null && result.files.single.path != null) {
-      final file = File(result.files.single.path!);
-      return [file.uri.toString()];
-    }
-    return [];
-  }*/
 
   Future<bool> initialUrlsMatch() async{
     for(url in widget.initialUrl){
@@ -145,7 +115,6 @@ class _WebScreenState extends State<WebScreen> {
   }
 
   Future<bool> _onWillPop() async {
-    var navigator = Navigator.of(context);
     if(await _webViewController.canGoBack() && !(await initialUrlsMatch())){
       _webViewController.goBack();
       return false;
@@ -156,7 +125,7 @@ class _WebScreenState extends State<WebScreen> {
         builder: (context) => YesNoDialog(
           title: AppLocalization.of(context).translate("exit").toString(),
           content: AppLocalization.of(context).translate("exit_content").toString(),
-          onSuccess: (){navigator.pop();},
+          onSuccess: (){FlutterExitApp.exitApp();},
         ),
       )) ?? false;
     }
