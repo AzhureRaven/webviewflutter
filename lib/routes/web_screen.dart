@@ -125,7 +125,7 @@ class _WebScreenState extends State<WebScreen> {
         builder: (context) => YesNoDialog(
           title: AppLocalization.of(context).translate("exit").toString(),
           content: AppLocalization.of(context).translate("exit_content").toString(),
-          onSuccess: (){FlutterExitApp.exitApp();},
+          onSuccess: (){Navigator.pop(context);},
         ),
       )) ?? false;
     }
