@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Ikan Kakap',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.indigo,
