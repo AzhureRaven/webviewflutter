@@ -40,7 +40,7 @@
             android:value="2" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="id.rasio.rejeki.fileprovider"
+            android:authorities="com.rasio.rejeki.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
