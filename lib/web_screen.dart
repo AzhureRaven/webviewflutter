@@ -103,7 +103,7 @@ class _WebScreenState extends State<WebScreen> {
         );
       },
       gestureNavigationEnabled: true,
-      geolocationEnabled: false, //support geolocation or not
+      geolocationEnabled: true, //support geolocation or not
     );
   }
 

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Rasio Rejeki',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.indigo,
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const WebScreen(initialUrl: ["https://reward.grandkecubunghotel.com/", "https://reward.grandkecubunghotel.com/rasio/login/&url=https:-*%7C%7C*-reward.grandkecubunghotel.com/rasio/","https://reward.grandkecubunghotel.com/rasio/home"]),
+        home: const WebScreen(initialUrl: ["https://rejeki.rasio.id/", "https://rejeki.rasio.id/rasio/login/&url=https:-*%7C%7C*-rejeki.rasio.id/rasio/rasio/application/index/MIS","https://rejeki.rasio.id/rasio/login/logout"]),
       ),
     );
   }

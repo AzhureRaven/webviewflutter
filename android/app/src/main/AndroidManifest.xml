@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
-        android:label="webviewflutter"
+        android:label="Rasio Rejeki"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -40,7 +40,7 @@
             android:value="2" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.azhureraven.webviewflutter.fileprovider"
+            android:authorities="id.rasio.rejeki.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
