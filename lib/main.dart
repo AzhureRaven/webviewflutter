@@ -4,6 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:webviewflutter/utilities/localization.dart';
 import 'package:webviewflutter/web_screen.dart';
 
@@ -15,6 +16,7 @@ void main() async {
     await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
   FlutterNativeSplash.remove();
+  //await Permission.camera.request();
   runApp(const MyApp());
 }
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
       child: MaterialApp(
-        title: 'Web View Flutter',
+        title: 'Reward Kecubung',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.indigo,
@@ -62,7 +64,7 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: const WebScreen(initialUrl: ["https://arie.ls/filetest/","https://reward.grandkecubunghotel.com/", "https://reward.grandkecubunghotel.com/rasio/login/&url=https:-*%7C%7C*-reward.grandkecubunghotel.com/rasio/","https://reward.grandkecubunghotel.com/rasio/home"]),
+        home: const WebScreen(initialUrl: ["https://reward.grandkecubunghotel.com/", "https://reward.grandkecubunghotel.com/rasio/login/&url=https:-*%7C%7C*-reward.grandkecubunghotel.com/rasio/","https://reward.grandkecubunghotel.com/rasio/home"]),
       ),
     );
   }
