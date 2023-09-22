@@ -7,7 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.VIDEO_CAPTURE" />
+    <uses-permission android:name="android.permission.AUDIO_CAPTURE" />
     <application
         android:label="Reward Kecubung"
         android:name="${applicationName}"
@@ -40,7 +42,7 @@
             android:value="2" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.azhureraven.rewardkecubung.fileprovider"
+            android:authorities="com.azhureraven.rewardkecubung.flutter_inappwebview.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
