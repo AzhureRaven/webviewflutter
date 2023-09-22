@@ -4,6 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:webviewflutter/utilities/constants.dart';
 import 'package:webviewflutter/utilities/localization.dart';
 import 'package:webviewflutter/routes/menu_screen.dart';
@@ -16,6 +17,7 @@ void main() async {
     await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
   await Constants.load();
+  await Permission.camera.request();
   FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
