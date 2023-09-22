@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -8,6 +10,11 @@ import 'package:webviewflutter/routes/menu_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (!kIsWeb &&
+      kDebugMode &&
+      defaultTargetPlatform == TargetPlatform.android) {
+    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
+  }
   await Constants.load();
   FlutterNativeSplash.remove();
   runApp(const MyApp());
@@ -21,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalLoaderOverlay(
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Kecubung Admin',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.indigo,
