@@ -79,8 +79,14 @@ class _WebScreenState extends State<WebScreen> {
               icon: Icon(Icons.close, color: Theme.of(context).primaryColorDark))
       ),
       body: SafeArea(
-        child: WillPopScope(
-            onWillPop: _onWillPop,
+        child: PopScope(
+            canPop: false,
+            onPopInvoked: (bool didPop){
+              if(didPop){
+                return;
+              }
+              _onWillPop();
+            },
             child: getWebView()
         ),
       ),
