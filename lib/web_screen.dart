@@ -65,8 +65,14 @@ class _WebScreenState extends State<WebScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: SafeArea(
-        child: WillPopScope(
-            onWillPop: _onWillPop,
+        child: PopScope(
+            canPop: false,
+            onPopInvoked: (bool didPop){
+              if(didPop){
+                return;
+              }
+              _onWillPop();
+            },
             child: getWebView()
         ),
       ),
