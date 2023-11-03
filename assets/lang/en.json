@@ -16,11 +16,18 @@
   "start_scan": "Start Scan",
   "cancel": "Cancel",
   "qr_error": "Cannot read QR Code",
+  "success_1": "Successfully redeemed Voucher",
+  "success_2": "belonging to",
+  "success_3": "on",
+  "error_1": "Sorry! An error occurred while redeeming the Voucher...",
+  "error_2": "Voucher is not recognized or Expired",
 
   "login": "Login",
   "welcome_back": "Welcome Back!",
   "username": "Your Username",
   "password": "Your Password",
   "login_fail": "Invalid Username/Password!",
-  "required_field": "This field is required"
+  "required_field": "This field is required",
+  "logout": "Sign Out",
+  "logout_content": "Are you sure you want to sign out?"
 }

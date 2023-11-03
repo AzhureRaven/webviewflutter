@@ -16,11 +16,18 @@
   "start_scan": "Mulai Scan",
   "cancel": "Kembali",
   "qr_error": "Tidak bisa membaca kode QR",
+  "success_1": "Berhasil redeem Voucher",
+  "success_2": "milik",
+  "success_3": "pada tanggal",
+  "error_1": "Maaf! Sebuah error terjadi saat redeem Voucher...",
+  "error_2": "Voucher tidak di kenali atau Expired",
 
   "login": "Login",
   "welcome_back": "Selamat datang kembali!",
   "username": "Nama Pengguna Anda",
   "password": "Kata Sandi Anda",
   "login_fail": "Nama Pengguna/Kata Sandi tidak valid!",
-  "required_field": "Kolom ini harus diisi"
+  "required_field": "Kolom ini harus diisi",
+  "logout": "Keluar",
+  "logout_content": "Apakah Anda Yakin Mau Keluar?"
 }
