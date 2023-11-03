@@ -63,7 +63,9 @@ class _WebScreenState extends State<WebScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(AppLocalization.of(context).translate("admin_page").toString()),
+      ),
       body: SafeArea(
         child: WillPopScope(
             onWillPop: _onWillPop,
