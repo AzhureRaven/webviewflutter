@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:provider/provider.dart';
 import '../../utilities/constants.dart';
 import '../../utilities/localization.dart';
+import '../models/account.dart';
+import '../utilities/http_api.dart';
+import '../utilities/secured_storage.dart';
+import '../utilities/shared_preferences.dart';
 import '../widgets/boxes.dart';
 import '../widgets/buttons.dart';
 import '../widgets/cards.dart';
@@ -22,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   late final TextEditingController _usernameController;
   late final TextEditingController _passwordController;
   bool _passwordVisible = false;
+  late SharedPreference prefs;
 
   @override
   void initState() {
@@ -40,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    prefs = Provider.of<SharedPreference>(context);
     return Scaffold(
         appBar: AppBar(
           title: Text(AppLocalization.of(context).translate("login").toString()),
@@ -109,10 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-                            return const ScanScreen();
-                          }));
-                          //doLogin(_usernameController.text, _passwordController.text, context);
+                          doLogin(_usernameController.text, _passwordController.text, context);
                         }
                       }
                   )
@@ -123,21 +127,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  /*void doLogin(String username, String password, BuildContext context){
+  void doLogin(String username, String password, BuildContext context){
     context.loaderOverlay.show();
     Map<String, String> data = {
       'user_name': username,
       'user_pass': password
     };
-    HttpApi http = HttpApi(url: "https://sindo.co.id/api/v1.0/login", data: data);
+    HttpApi http = HttpApi(url: "https://admin.grandkecubunghotel.com/api/v1.0/login", data: data);
     Future<String> result = http.postStringData();
     result.then((response){
       context.loaderOverlay.hide();
       try{
         Account account = parseAccount(response);
         Provider.of<SecuredStorage>(context, listen: false).setSession(username, password, account);
-        if(FirebaseMsg.token != "") updateFCMToken(username, password, FirebaseMsg.token, context);
-        Navigator.pushReplacementNamed(context, AccountScreen.routeName);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
+          return const ScanScreen();
+        }));
       }catch(e){
         print(e);
         ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("login_fail").toString()));
@@ -149,26 +154,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void updateFCMToken(String username, String password, String token, BuildContext context){
-    Map<String, String> data = {
-      'user_name': username,
-      'user_pass': password,
-      'token_cfm': token
-    };
-    HttpApi http = HttpApi(url: "https://sindo.co.id/api/v1.0/token_cfm", data: data);
-    Future<String> result = http.postStringData();
-    result.then((response){
-      try{
-        print("sukses update token");
-      }catch(e){
-        print(e);
-        ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("token_fail").toString()));
-      }
-    }).catchError((e){
-      print(e);
-      ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("token_fail").toString()));
-    });
-  }*/
+  SnackBar BasicSnackBar(String message){
+    return SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 5),
+    );
+  }
 
   Widget formFieldWrap(Widget child){
     return BasicCard(

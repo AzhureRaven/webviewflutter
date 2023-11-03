@@ -48,6 +48,12 @@ dependencies:
   permission_handler: ^11.0.0
   url_launcher: ^6.1.14
   flutter_barcode_scanner: ^2.0.0
+  shared_preferences: ^2.1.0
+  flutter_dotenv: ^5.0.2
+  http: ^0.13.5
+  crypto: ^3.0.2
+  provider: ^6.0.5
+  flutter_secure_storage: ^8.0.0
   #webview_flutter: ^4.2.2
   #webview_flutter_android: ^3.9.2
   #webview_flutter_wkwebview: ^3.7.2
@@ -111,6 +117,7 @@ flutter:
     - images/
     - assets/
     - assets/lang/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

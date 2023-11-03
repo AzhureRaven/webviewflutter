@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewflutter/utilities/constants.dart';
 import 'package:webviewflutter/widgets/labels.dart';
 
 import '../utilities/localization.dart';
+import '../utilities/secured_storage.dart';
 import '../widgets/boxes.dart';
 
 class ScanScreen extends StatefulWidget {
@@ -36,7 +38,8 @@ class _ScanScreenState extends State<ScanScreen> {
             ),
           ),
           BasicLabel(text: id, font: "large"),
-          BasicLabel(text: info)
+          BasicLabel(text: info),
+          BasicLabel(text: Provider.of<SecuredStorage>(context, listen: false).data!.username.toString())
         ],
       ),
     );
