@@ -205,13 +205,15 @@ class _WebScreenState extends State<WebScreen> {
 
   Future<bool> initialUrlsMatch() async{
     for(url in widget.initialUrl){
-      if(webViewController.getUrl().toString() == url) return true;
+      var uri = await webViewController.getUrl();
+      if(uri?.uriValue.toString() == url.toString()) return true;
     }
     return false;
   }
 
   Future<bool> _onWillPop() async {
-    if(await webViewController.canGoBack() && !(await initialUrlsMatch())){
+    if(!(await initialUrlsMatch()) && await webViewController.canGoBack()){
+      print("going back");
       webViewController.goBack();
       return false;
     }
