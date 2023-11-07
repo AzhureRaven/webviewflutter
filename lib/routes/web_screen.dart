@@ -65,6 +65,18 @@ class _WebScreenState extends State<WebScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalization.of(context).translate("admin_page").toString()),
+          leading: IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => YesNoDialog(
+                    title: AppLocalization.of(context).translate("exit").toString(),
+                    content: AppLocalization.of(context).translate("exit_content").toString(),
+                    onSuccess: (){Navigator.pop(context);},
+                  ),
+                );
+              },
+              icon: Icon(Icons.close, color: Theme.of(context).primaryColorDark))
       ),
       body: SafeArea(
         child: WillPopScope(
