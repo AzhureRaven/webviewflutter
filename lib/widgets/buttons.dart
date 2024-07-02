@@ -34,7 +34,7 @@ class ColoredTextButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(Constants.getRoundSize(radius)), // Change this value to adjust the roundness
         ),
       ),
-      child: BasicLabel(
+      child: ColoredLabel(
         text: text,
         font: font,
       ),

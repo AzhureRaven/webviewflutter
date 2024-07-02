@@ -76,7 +76,7 @@ class _WebScreenState extends State<WebScreen> {
                   ),
                 );
               },
-              icon: Icon(Icons.close, color: Theme.of(context).primaryColorDark))
+              icon: const Icon(Icons.close))
       ),
       body: SafeArea(
         child: PopScope(

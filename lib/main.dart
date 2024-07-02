@@ -60,6 +60,10 @@ class MyApp extends StatelessWidget {
                   //disabledColor: Colors.grey[400],
                   disabledColor: Colors.black,
                   cardTheme: const CardTheme(color: Colors.white,elevation: 3),
+                  appBarTheme: const AppBarTheme(
+                      backgroundColor: Colors.indigo,
+                      foregroundColor: Colors.white
+                  )
                 ),
                 darkTheme: ThemeData(
                   colorScheme: ColorScheme.fromSwatch(
@@ -73,6 +77,10 @@ class MyApp extends StatelessWidget {
                   //disabledColor: Colors.grey[700],
                   disabledColor: Colors.white,
                   cardTheme: CardTheme(color: Colors.grey[800], elevation: 3),
+                  appBarTheme: AppBarTheme(
+                      backgroundColor: Colors.grey[900],
+                      foregroundColor: Colors.white
+                  )
                 ),
                 supportedLocales: const [Locale('en'),Locale('id')],
                 localizationsDelegates: const [
