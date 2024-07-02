@@ -165,8 +165,11 @@ class _WebScreenState extends State<WebScreen> {
         showDialog(
           context: context,
           builder: (context) =>
-              WillPopScope(
-                onWillPop: () async => false,
+              PopScope(
+                canPop: false,
+                onPopInvoked: (bool didPop) {
+                  return;
+                },
                 child: RetryDialog(
                   title: AppLocalization.of(context)
                       .translate("error_internet")
