@@ -24,7 +24,7 @@ class MenuScreen extends StatelessWidget {
             const Gap(height: "regular"),
             Image.asset("images/logo.png", width: 100, fit: BoxFit.fitHeight),
             const Gap(height: "regular"),
-            BasicLabel(text: AppLocalization.of(context).translate("title").toString(), font: "super_large"),
+            BasicLabel(text: AppLocalization.of(context).translate("title"), font: "super_large"),
             const Gap(height: "regular"),
             PaddingBox(
               child: SizedBox(
@@ -42,7 +42,7 @@ class MenuScreen extends StatelessWidget {
                         }));
                       }
                     });
-                  }, child: BasicLabel(text: AppLocalization.of(context).translate("scanner").toString()))
+                  }, child: BasicLabel(text: AppLocalization.of(context).translate("scanner")))
               ),
             ),
             PaddingBox(
@@ -52,7 +52,7 @@ class MenuScreen extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context){
                     return const WebScreen(initialUrl: ["https://admin.grandkecubunghotel.com/","https://admin.grandkecubunghotel.com/rasio/login/logout","https://admin.grandkecubunghotel.com/rasio/login"]);
                   }));
-                }, child: BasicLabel(text: AppLocalization.of(context).translate("admin").toString())),
+                }, child: BasicLabel(text: AppLocalization.of(context).translate("admin"))),
               ),
             ),
           ],

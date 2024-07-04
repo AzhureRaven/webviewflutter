@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
-import '../../utilities/constants.dart';
 import '../../utilities/localization.dart';
 import '../models/account.dart';
 import '../utilities/http_api.dart';
@@ -57,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: [
-                  ColoredLabel(text: AppLocalization.of(context).translate("login").toString(), font: "large", fontWeight: FontWeight.bold,),
+                  ColoredLabel(text: AppLocalization.of(context).translate("login"), font: "large", fontWeight: FontWeight.bold,),
                   const Gap(height: "small"),
                   formFieldWrap(
                     TextFormField(
@@ -68,11 +67,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (data != null && data != "") {
                           return null;
                         } else {
-                          return AppLocalization.of(context).translate("required_field").toString();
+                          return AppLocalization.of(context).translate("required_field");
                         }
                       },
                       decoration: InputDecoration(
-                          hintText: AppLocalization.of(context).translate("username").toString(),
+                          hintText: AppLocalization.of(context).translate("username"),
                           prefixIcon: const SizedBox(),
                           suffixIcon: const SizedBox(),
                           border: InputBorder.none
@@ -88,11 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (data != null && data != "") {
                           return null;
                         } else {
-                          return AppLocalization.of(context).translate("required_field").toString();
+                          return AppLocalization.of(context).translate("required_field");
                         }
                       },
                       decoration: InputDecoration(
-                          hintText: AppLocalization.of(context).translate("password").toString(),
+                          hintText: AppLocalization.of(context).translate("password"),
                           prefixIcon: const SizedBox(),
                           suffixIcon: GestureDetector(
                             onTap: () {
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const Gap(height: "regular"),
                   ColoredTextButton(
-                      text: AppLocalization.of(context).translate("login").toString(),
+                      text: AppLocalization.of(context).translate("login"),
                       font: "regular",
                       height: 40,
                       width: 120,
@@ -145,12 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
         }));
       }catch(e){
         print(e);
-        ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("login_fail").toString()));
+        ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("login_fail")));
       }
     }).catchError((e){
       context.loaderOverlay.hide();
       print(e);
-      ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("check_internet").toString()));
+      ScaffoldMessenger.of(context).showSnackBar(BasicSnackBar(AppLocalization.of(context).translate("check_internet")));
     });
   }
 
