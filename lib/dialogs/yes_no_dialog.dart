@@ -15,12 +15,12 @@ class YesNoDialog extends StatelessWidget {
       actions: [
         TextButton(onPressed: () {
           Navigator.pop(context);
-        }, child: Text(AppLocalization.of(context).translate("no").toString())),
+        }, child: Text(AppLocalization.of(context).translate("no"))),
         const SizedBox(width: 8.0),
         TextButton(onPressed: () {
           onSuccess.call();
           Navigator.pop(context);
-        }, child: Text(AppLocalization.of(context).translate("yes").toString()))
+        }, child: Text(AppLocalization.of(context).translate("yes")))
       ],
     );
   }

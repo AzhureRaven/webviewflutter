@@ -17,11 +17,11 @@ class RetryDialog extends StatelessWidget {
         TextButton(onPressed: () {
           onRollback.call();
           Navigator.pop(context);
-        }, child: Text(AppLocalization.of(context).translate("retry_prev").toString())),
+        }, child: Text(AppLocalization.of(context).translate("retry_prev"))),
         TextButton(onPressed: () {
           onRetry.call();
           Navigator.pop(context);
-        }, child: Text(AppLocalization.of(context).translate("retry").toString()))
+        }, child: Text(AppLocalization.of(context).translate("retry")))
       ],
     );
   }
