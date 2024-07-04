@@ -20,8 +20,11 @@ class AppLocalization {
         mappedValues.map((key, value) => MapEntry(key, value.toString()));
   }
 
-  String? translate(String key) {
-    return _localizedValues[key];
+  String translate(String key) {
+    if (key.isNotEmpty && _localizedValues.containsKey(key)) {
+      return _localizedValues[key].toString();
+    }
+    return "";
   }
 
   static const LocalizationsDelegate<AppLocalization> delegate =
